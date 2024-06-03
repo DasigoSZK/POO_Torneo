@@ -26,7 +26,7 @@ public class PeleadorConTecnica extends Peleador{
 		adversario.setPuntosVida(adversario.getPuntosVida() - this.getTecnica().getDano());
 	}
 	
-	//SOBRESCRIBE el método pelear pero con técnica especial
+	//SOBRESCRIBE la el método pelear pero con técnica especial
 	public Peleador[] pelear(Peleador contrincante) {
 		
 		boolean tecnica1 = false;

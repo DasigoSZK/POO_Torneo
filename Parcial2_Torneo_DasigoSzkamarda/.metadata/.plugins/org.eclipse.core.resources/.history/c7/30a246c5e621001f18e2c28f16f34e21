@@ -65,7 +65,7 @@ public abstract class Peleador {
 	//Recarga las energias del peleador para la siguiente ronda
 	public void comerSemillaDelHermitano() {
 		
-		//Recarga la vida actual a su punto máximo seteado
+		//Suma 1000hp al peleador
 		this.setPuntosVida(this.getPuntosVidaMax());
 		System.out.println(this.getNombre() + " comió una semilla del hermitaño🫐 recuperando 100% de su vitalidad⚡");
 	}

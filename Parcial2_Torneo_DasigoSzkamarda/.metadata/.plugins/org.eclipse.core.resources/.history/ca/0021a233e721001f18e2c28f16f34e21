@@ -27,8 +27,6 @@ public class Ronda {
 	
 	//Inicia las peleas
 	public void iniciarRonda() {
-		
-		//Selecciona 2 peleadores por iteración
 		for(int i=0; i<this.getPeleadores().size(); i+=2) {
 			
 	    	//peleadores

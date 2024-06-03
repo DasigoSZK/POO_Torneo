@@ -146,7 +146,7 @@ public class Torneo {
 		for(Peleador ganador : ganadores) {
 			//Pasa ronda
 			this.getRondas().get(ronda).getPeleadores().add(ganador);
-			//Recarga el HP (vida) del peleador
+			//Recarga energía y vuelve a estado base
 			ganador.comerSemillaDelHermitano();
 		}
 		

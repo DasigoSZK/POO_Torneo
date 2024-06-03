@@ -60,7 +60,7 @@ public class PeleadorConTransformacion extends PeleadorConTecnica{
 		this.transformado = false;
 	}
 	
-	//SOBRESCRIBE el método pelear pero con TÉCNICA y TRANSFORMACION
+	//SOBRESCRIBE la el método pelear pero con TÉCNICA y TRANSFORMACION
 	public Peleador[] pelear(Peleador contrincante) {
 		
 		boolean tecnica1 = false;

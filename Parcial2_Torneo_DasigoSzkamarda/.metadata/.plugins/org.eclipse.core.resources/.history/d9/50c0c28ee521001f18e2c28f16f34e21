@@ -68,7 +68,6 @@ public class Torneo {
 
             // Obtenemos el peleador seleccionado
             if (selecActual == JOptionPane.OK_OPTION) {
-            	
             	//Buscamos la instancia del Peleador que coincida con el nombre el combobox
                 String nombrePeleador = (String) comboBox.getSelectedItem();
                 Peleador peleadorSeleccionado = buscarPeleador(peleadores, nombrePeleador);
@@ -80,15 +79,12 @@ public class Torneo {
                 seleccionados += cont + "_" + peleadoresSeleccionables.get(indexSeleccionado) + "\n";
                 // Lo borramos del combobox
                 peleadoresSeleccionables.remove(indexSeleccionado);
-                
             } else {
-            	//Si el usuario no seleccionó los 16 peleadores necesarios
             	int cancelarTorneo = JOptionPane.showConfirmDialog(null, "Aún no has seleccionado a los 16 peleadores para el torneo."
             			+ "\n¿Estas seguro que deseas cancelar el torneo?", "Torneo de Artes Marciales", JOptionPane.YES_NO_OPTION);
             	if(cancelarTorneo == JOptionPane.YES_OPTION) {            		
             		System.exit(0);; // Salir del bucle
             	}
-            	
             }   
         }
         //------------------------------------------------------------------------------------
@@ -107,7 +103,7 @@ public class Torneo {
         
     }
     
-    //Busca un PELEADOR por su NOMBRE
+    //Busca un peleador por su nombre
     private static Peleador buscarPeleador(List<Peleador> peleadores, String nombre) {
     	
     	//Busca el nombre del pelador en la lista de peleadores
@@ -146,7 +142,7 @@ public class Torneo {
 		for(Peleador ganador : ganadores) {
 			//Pasa ronda
 			this.getRondas().get(ronda).getPeleadores().add(ganador);
-			//Recarga el HP (vida) del peleador
+			//Recarga energía y vuelve a estado base
 			ganador.comerSemillaDelHermitano();
 		}
 		

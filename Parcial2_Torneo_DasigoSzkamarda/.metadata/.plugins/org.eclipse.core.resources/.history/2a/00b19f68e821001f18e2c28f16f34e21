@@ -69,7 +69,7 @@ public class Main {
 	    Peleador goten = new PeleadorConTransformacion("Goten", 1200, 1200, 130, true, true, kamehameha, superSaiyajin2);
 	    Peleador trunks = new PeleadorConTransformacion("Trunks", 1200, 1200, 135, true, true, new TecnicaEspecial("Burning Attack", 250), superSaiyajin2);
 	    Peleador jiren = new PeleadorConTecnica("Jiren", 2500, 2500, 170, true, false, powerImpact);
-	    Peleador toppo = new PeleadorConTecnica("Toppo", 2000, 2000, 165, true, false, hakai);
+	    Peleador toppo = new PeleadorConTecnica("Toppo", 2000, 2000, 165, true, true, hakai);
 	    Peleador freezer = new PeleadorConTransformacion("Freezer", 1900, 1900, 160, true, true, supernova, goldenFreezer);
 	    Peleador cooler = new PeleadorConTransformacion("Cooler", 1500, 1500, 155, true, true, supernova, metaCooler);
 	    Peleador frost = new PeleadorConTransformacion("Frost", 1400, 1400, 150, true, true, agujaDeVeneno, formaFinal);
