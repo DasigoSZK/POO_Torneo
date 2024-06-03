@@ -1,0 +1,61 @@
+package torneo;
+
+public class FrostDemon extends Peleador{
+	
+	private TecnicaEspecial tecnica;
+	private Transformacion transformacion;
+	
+	//----------------------------Constructor----------------------------
+	public FrostDemon(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+					TecnicaEspecial tecnica, Transformacion transformacion) {
+		
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = tecnica;
+		this.transformacion = transformacion;
+	}
+	
+	public FrostDemon(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+			TecnicaEspecial tecnica) {
+
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = tecnica;
+		this.transformacion = new Transformacion("Poder Máximo", 5, 10);
+	}
+	
+	public FrostDemon(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse) {
+
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = new TecnicaEspecial("Bola de Energía", 100);
+		this.transformacion = new Transformacion("Poder Máximo", 5, 10);
+	}
+
+	
+	//----------------------------Métodos----------------------------
+	
+	//Se transforma en Golden Freezer / Poder Máximo
+	public void transformarse() {
+		
+	}
+	
+	//Utiliza su técnica especial en el contricante
+	public void usarTecnica(Peleador adversario) {
+		
+	}
+	
+	
+	public TecnicaEspecial getTecnica() {
+		return tecnica;
+	}
+
+	public void setTecnica(TecnicaEspecial tecnica) {
+		this.tecnica = tecnica;
+	}
+
+	public Transformacion getTransformacion() {
+		return transformacion;
+	}
+
+	public void setTransformacion(Transformacion transformacion) {
+		this.transformacion = transformacion;
+	}
+}

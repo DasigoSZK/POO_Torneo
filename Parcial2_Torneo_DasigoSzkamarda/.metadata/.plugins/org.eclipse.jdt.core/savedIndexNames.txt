@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\Dasig\Desktop\dev\DaVinci\Cursada\2do-cuatrimestre\POO\Clases\Parcial_2\Parcial2_Torneo_DasigoSzkamarda\.metadata\.plugins\org.eclipse.jdt.core
+2486119593.index
+956107005.index
+1865797976.index

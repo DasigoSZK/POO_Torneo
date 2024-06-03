@@ -1,0 +1,30 @@
+package torneo;
+
+import javax.swing.JOptionPane;
+
+public class FrostDemon extends PeleadorConTransformacion{
+
+	
+	//----------------------------Constructor----------------------------
+	public FrostDemon(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+					TecnicaEspecial tecnica, Transformacion transformacion) {
+		
+		super(nombre, puntosVida+600, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, tecnica, transformacion);
+	}
+	
+	public FrostDemon(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+			TecnicaEspecial tecnica) {
+
+		super(nombre, puntosVida+600, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, tecnica, new Transformacion("Poder Máximo", 5, 10));
+	}
+	
+	public FrostDemon(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse) {
+
+		super(nombre, puntosVida+600, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse,
+				new TecnicaEspecial("Bola de Energía", 100), new Transformacion("Poder Máximo", 5, 10));
+	}
+
+	
+	//----------------------------Métodos----------------------------
+
+}

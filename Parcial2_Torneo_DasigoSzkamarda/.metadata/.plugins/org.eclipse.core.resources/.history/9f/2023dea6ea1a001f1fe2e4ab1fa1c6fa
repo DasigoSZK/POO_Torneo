@@ -1,0 +1,21 @@
+package torneo;
+
+public class Humano extends Peleador{
+
+	private TecnicaEspecial tecnica;
+	
+	public Humano(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+					TecnicaEspecial tecnica) {
+		
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = tecnica;
+	}
+	
+	public Humano(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse) {
+
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = new TecnicaEspecial("Lanza Objeto", 10);
+	}
+
+	
+}

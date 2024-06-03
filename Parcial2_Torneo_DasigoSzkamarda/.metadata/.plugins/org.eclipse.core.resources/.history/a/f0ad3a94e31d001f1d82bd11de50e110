@@ -1,0 +1,27 @@
+package torneo;
+
+public class PeleadorConTransformacion extends PeleadorConTecnica{
+	
+	private TecnicaEspecial tecnica;
+	private Transformacion transformacion;
+	
+	//----------------------------Constructor----------------------------
+
+	public PeleadorConTransformacion(String nombre, double puntosVida, double danoXsegundo,
+			boolean tieneTecnicaEspecial, boolean puedeTransformarse, TecnicaEspecial tecnica, TecnicaEspecial tecnica2,
+			Transformacion transformacion) {
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, tecnica);
+		tecnica = tecnica2;
+		this.transformacion = transformacion;
+	}
+	
+	public PeleadorConTransformacion(String nombre, double puntosVida, double danoXsegundo,
+			boolean tieneTecnicaEspecial, boolean puedeTransformarse, TecnicaEspecial tecnica, TecnicaEspecial tecnica2) {
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, tecnica);
+		tecnica = tecnica2;
+		this.transformacion = new Transformacion("Poder Máximo", 1.2, 1.5);
+	}
+	
+	
+
+}

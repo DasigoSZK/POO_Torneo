@@ -1,0 +1,10 @@
+package torneo;
+
+import java.util.*;
+
+public class Ronda {
+
+	private List<Peleador> peleadores;
+	private List<Peleador> ganadores;
+	private List<Peleador> perdedores;
+}

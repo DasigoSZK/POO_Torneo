@@ -1,0 +1,29 @@
+package torneo;
+
+import javax.swing.JOptionPane;
+
+public class Majin extends PeleadorConTransformacion{
+	
+	//----------------------------Constructor----------------------------
+	public Majin(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+					TecnicaEspecial tecnica, Transformacion transformacion) {
+		
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, tecnica, transformacion);
+	}
+	
+	public Majin(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+			TecnicaEspecial tecnica) {
+
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, tecnica, new Transformacion("Poder Máximo", 5, 10));
+	}
+	
+	public Majin(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse) {
+
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse
+				, new TecnicaEspecial("Bola de Energía", 100), new Transformacion("Poder Máximo", 5, 10));
+	}
+
+	
+	//----------------------------Métodos----------------------------
+	
+}

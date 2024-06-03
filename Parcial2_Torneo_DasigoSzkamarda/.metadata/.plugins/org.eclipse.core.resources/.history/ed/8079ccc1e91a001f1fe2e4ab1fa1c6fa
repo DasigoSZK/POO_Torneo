@@ -1,0 +1,25 @@
+package torneo;
+
+public class Saiyajin extends Peleador{
+	
+	private TecnicaEspecial tecnica;
+	private Transformacion transformacion;
+	
+	public Saiyajin(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+					TecnicaEspecial tecnica, Transformacion transformacion) {
+		
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = tecnica;
+		this.transformacion = transformacion;
+	}
+	public Saiyajin(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+			TecnicaEspecial tecnica) {
+
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = tecnica;
+		this.transformacion = new Transformacion("Poder Máximo", 5, 10);
+	}
+	
+	
+	
+}

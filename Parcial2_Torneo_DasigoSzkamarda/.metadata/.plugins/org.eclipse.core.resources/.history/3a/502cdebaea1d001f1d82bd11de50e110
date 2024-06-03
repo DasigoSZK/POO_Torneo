@@ -1,0 +1,24 @@
+package torneo;
+
+import javax.swing.JOptionPane;
+
+public class Alienigena extends PeleadorConTecnica{
+
+	
+	//----------------------------Constructor----------------------------
+	public Alienigena(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+					TecnicaEspecial tecnica) {
+		
+		super(nombre, puntosVida+500, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, tecnica);
+	}
+	
+	public Alienigena(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse) {
+
+		super(nombre, puntosVida+500, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse,new TecnicaEspecial("Carga de Energía", 100));
+	}
+	
+	
+	//----------------------------Métodos----------------------------
+	
+	
+}

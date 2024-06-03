@@ -1,0 +1,9 @@
+package torneo;
+
+public class Saiyajin extends Peleador{
+
+	private TecnicaEspecial tecnica;
+	private Transformacion transformacion;
+	
+	
+}

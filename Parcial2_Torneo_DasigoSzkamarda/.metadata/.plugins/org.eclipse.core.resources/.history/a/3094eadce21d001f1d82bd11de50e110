@@ -1,0 +1,18 @@
+package torneo;
+
+public class PeleadorConTecnica extends Peleador{
+
+	private TecnicaEspecial tecnica;
+
+	public PeleadorConTecnica(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial,
+			boolean puedeTransformarse, TecnicaEspecial tecnica) {
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = tecnica;
+	}
+	public PeleadorConTecnica(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial,
+			boolean puedeTransformarse) {
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = new TecnicaEspecial("Bola de Energía", 100);
+	}
+	
+}

@@ -1,0 +1,150 @@
+package torneo;
+
+import javax.swing.JOptionPane;
+
+public abstract class Peleador {
+
+	private String nombre;
+	private double puntosVida;
+	private double puntosVidaMax;
+	private double danoXsegundo; 
+	private boolean tieneTecnicaEspecial;
+	private boolean puedeTransformarse;
+	
+	//----------------------------Constructor----------------------------	
+	public Peleador(String nombre, double puntosVida, double puntosVidaMax, double danoXsegundo, boolean tieneTecnicaEspecial,
+			boolean puedeTransformarse) {
+		super();
+		this.nombre = nombre;
+		this.puntosVida = puntosVida;
+		this.puntosVidaMax = puntosVidaMax;
+		this.danoXsegundo = danoXsegundo;
+		this.tieneTecnicaEspecial = tieneTecnicaEspecial;
+		this.puedeTransformarse = puedeTransformarse;
+	}
+
+
+	//----------------------------Métodos----------------------------
+	
+	//Ejecuta una pelea de "n" movimientos, devolviendo el ganador y el perdedor
+	public Peleador[] pelear(Peleador contrincante) {
+		
+		//Array para guardar al ganador(pos 0) y al perdedor(pos 1)
+		Peleador[] ganador_perdedor = new Peleador[2];
+		String historialPelea = this.getNombre() + " VS " + contrincante.getNombre() + "\n";
+		
+		//Pelean hasta que uno se quede sin vida
+		while(this.getPuntosVida() > 0 && contrincante.getPuntosVida() > 0) {
+			
+			//Peleador 1 golpea al Peleador 2
+			contrincante.setPuntosVida(contrincante.getPuntosVida() - this.getDanoXsegundo());
+			historialPelea += this.getNombre() + " golpea a " + contrincante.getNombre() + " (-" + this.getDanoXsegundo() + " HP)\n";
+			
+			//Peleador 2 golpea al Peleador 1
+			this.setPuntosVida(this.getPuntosVida() - contrincante.getDanoXsegundo());
+			historialPelea += contrincante.getNombre() + " golpea a " + this.getNombre() + " (-" + contrincante.getDanoXsegundo() + " HP)\n";
+		}
+		
+		if(this.getPuntosVida() <= 0) {
+			//Gana el contrincante
+			ganador_perdedor[0] = contrincante;
+			ganador_perdedor[1] = this;
+			historialPelea += this.getNombre() + " ya no es capaz de seguir peleando. \n\n " + contrincante.getNombre() + " es el GANADOR!!";
+		}else {
+			//Gana el peleador actual
+			ganador_perdedor[0] = this;
+			ganador_perdedor[1] = contrincante;	
+			historialPelea += contrincante.getNombre() + " ya no es capaz de seguir peleando. \n\n " + this.getNombre() + " es el GANADOR!!";
+		}
+		
+		JOptionPane.showMessageDialog(null, historialPelea);
+		return ganador_perdedor;
+		
+	}
+	
+	//Recarga las energias del peleador para la siguiente ronda
+	public void comerSemillaDelHermitano() {
+		
+		//Suma 1000hp al peleador
+		this.setPuntosVida(this.getPuntosVidaMax());
+		System.out.println(this.getNombre() + " comió una semilla del hermitaño🫐 recuperando 100% de su vitalidad⚡");
+	}
+	
+	//Vuelve a su estado base desde la transformación
+	public abstract void volverEstadoBase();
+	
+	public void usarTecnica(Peleador contrincante) {}
+	
+	public TecnicaEspecial getTecnica() {
+		return null;
+	}
+	
+	public Transformacion getTransformacion() {
+		return null;
+	}
+	
+	public void transformarse() {}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public double getPuntosVida() {
+		return puntosVida;
+	}
+
+
+	public void setPuntosVida(double puntosVida) {
+		this.puntosVida = puntosVida;
+	}
+
+
+	public double getDanoXsegundo() {
+		return danoXsegundo;
+	}
+
+
+	public void setDanoXsegundo(double danoXsegundo) {
+		this.danoXsegundo = danoXsegundo;
+	}
+
+
+	public boolean isTieneTecnicaEspecial() {
+		return tieneTecnicaEspecial;
+	}
+
+
+	public void setTieneTecnicaEspecial(boolean tieneTecnicaEspecial) {
+		this.tieneTecnicaEspecial = tieneTecnicaEspecial;
+	}
+
+
+	public boolean isPuedeTransformarse() {
+		return puedeTransformarse;
+	}
+
+
+	public void setPuedeTransformarse(boolean puedeTransformarse) {
+		this.puedeTransformarse = puedeTransformarse;
+	}
+
+
+	public double getPuntosVidaMax() {
+		return puntosVidaMax;
+	}
+
+
+	public void setPuntosVidaMax(double puntosVidaMax) {
+		this.puntosVidaMax = puntosVidaMax;
+	}  
+	
+	
+	
+	
+}

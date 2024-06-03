@@ -1,0 +1,36 @@
+package torneo;
+
+import javax.swing.JOptionPane;
+
+public class Saiyajin extends PeleadorConTransformacion{
+	
+	//----------------------------Constructor----------------------------
+	public Saiyajin(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+					TecnicaEspecial tecnica, Transformacion transformacion) {
+		
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = tecnica;
+		this.transformacion = transformacion;
+	}
+	
+	public Saiyajin(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse, 
+			TecnicaEspecial tecnica) {
+
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = tecnica;
+		this.transformacion = new Transformacion("Poder Máximo", 5, 10);
+	}
+	
+	public Saiyajin(String nombre, double puntosVida, double danoXsegundo, boolean tieneTecnicaEspecial, boolean puedeTransformarse) {
+
+		super(nombre, puntosVida, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse
+				,new TecnicaEspecial("Bola de Energía", 100), new Transformacion("Poder Máximo", 5, 10));
+		this.tecnica = new TecnicaEspecial("Bola de Energía", 100);
+		this.transformacion = new Transformacion("Poder Máximo", 5, 10);
+	}
+
+	
+	//----------------------------Métodos----------------------------
+	
+	
+}
