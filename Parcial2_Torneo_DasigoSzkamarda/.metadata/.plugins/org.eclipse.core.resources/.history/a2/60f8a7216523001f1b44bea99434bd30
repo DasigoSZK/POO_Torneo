@@ -2,71 +2,38 @@ package torneo;
 
 import javax.swing.JOptionPane;
 
-public class PeleadorConTransformacion extends PeleadorConTecnica{
-	
-	
-	private Transformacion transformacion;
-	private boolean transformado;
-	
+public class PeleadorConTecnica extends Peleador{
+
+	private TecnicaEspecial tecnica;
+
 	//----------------------------Constructor----------------------------
-	//Constructor completo
-	public PeleadorConTransformacion(String nombre, double puntosVida, double puntosVidaMax, double danoXsegundo,
-			boolean tieneTecnicaEspecial, boolean puedeTransformarse, TecnicaEspecial tecnica, Transformacion transformacion) {
-		super(nombre, puntosVida,puntosVidaMax , danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, tecnica);
-		this.transformacion = transformacion;
-		this.transformado = false;
+	public PeleadorConTecnica(String nombre, double puntosVida, double puntosVidaMax, double danoXsegundo, boolean tieneTecnicaEspecial,
+			boolean puedeTransformarse, TecnicaEspecial tecnica) {
+		super(nombre, puntosVida, puntosVidaMax, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = tecnica;
 	}
-	//Constructor sin transformacion
-	public PeleadorConTransformacion(String nombre, double puntosVida, double puntosVidaMax, double danoXsegundo,
-			boolean tieneTecnicaEspecial, boolean puedeTransformarse, TecnicaEspecial tecnica) {
-		super(nombre, puntosVida, puntosVidaMax, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, tecnica);
-		this.transformacion = new Transformacion("Poder Máximo", 1.2, 1.5);
-		this.transformado = false;
+	public PeleadorConTecnica(String nombre, double puntosVida, double puntosVidaMax, double danoXsegundo, boolean tieneTecnicaEspecial,
+			boolean puedeTransformarse) {
+		super(nombre, puntosVida, puntosVidaMax, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse);
+		this.tecnica = new TecnicaEspecial("Bola de Energía", 100);
 	}
-	//Constructor sin transformacion/tecnica
-	public PeleadorConTransformacion(String nombre, double puntosVida, double puntosVidaMax, double danoXsegundo,
-			boolean tieneTecnicaEspecial, boolean puedeTransformarse) {
-		super(nombre, puntosVida, puntosVidaMax, danoXsegundo, tieneTecnicaEspecial, puedeTransformarse, new TecnicaEspecial("Bola de Energía", 100));
-		this.transformacion = new Transformacion("Poder Máximo", 1.2, 1.5);
-		this.transformado = false;
-	}
-	
 	
 	//----------------------------Métodos----------------------------
 	
-	//Se transforma multiplicando VIDA y DAÑO
-	public void transformarse() {
-		
-		//Recupera toda su vitalidad
-		this.setPuntosVida(this.getPuntosVidaMax());
-		
-		//Multiplica la vida del peleador
-		this.setPuntosVida(this.getPuntosVida() * this.getTransformacion().getVidaExtra());
-		//Multiplica el daño por segundo del peleador
-		this.setDanoXsegundo(this.getDanoXsegundo() * this.getTransformacion().getDanoExtra());
-		
-		this.transformado = true;
+	//Utiliza su técnica especial en el contricante
+	public void usarTecnica(Peleador adversario) {
+		//El adversario es dañado por la técnica
+		adversario.setPuntosVida(adversario.getPuntosVida() - this.getTecnica().getDano());
 	}
 	
-	//Vuelve a su estado base desde la transformación
-	public void volverEstadoBase() {
-		
-		//Reduce su vida máxima
-		this.setPuntosVida(this.getPuntosVida() / this.getTransformacion().getVidaExtra());
-		
-		//Reduce su daño por segundo
-		this.setDanoXsegundo(this.getDanoXsegundo() / this.getTransformacion().getDanoExtra());
-		
-		this.transformado = false;
-	}
-	
-	//SOBRESCRIBE el método pelear pero con TÉCNICA y TRANSFORMACION
+	//SOBRESCRIBE el método pelear pero con técnica especial
 	public Peleador[] pelear(Peleador contrincante) {
 		
 		boolean tecnica1 = false;
 		boolean tecnica2 = false;
 		boolean transformacionContrincante = false;
 		boolean golpeCritico;
+		
 		
 		//Array para guardar al ganador(pos 0) y al perdedor(pos 1)
 		Peleador[] ganador_perdedor = new Peleador[2];
@@ -87,7 +54,7 @@ public class PeleadorConTransformacion extends PeleadorConTecnica{
 					//Golpea un 50% mas fuerte
 					contrincante.setPuntosVida(contrincante.getPuntosVida() - (this.getDanoXsegundo() * 1.50));
 					if(contrincante.getPuntosVida() < 0) contrincante.setPuntosVida(0);
-					historialPelea += this.getNombre() + " lanza un golpe 💥💥CRÍTICO💥💥"+ " (-" + (this.getDanoXsegundo() * 1.50) + " HP) "+ " a " 
+					historialPelea += this.getNombre() + " lanza un <b>golpe CRÍTICO</b>"+ " (-" + (this.getDanoXsegundo() * 1.50) + " HP) "+ " a " 
 							+ contrincante.getNombre() + " (" + contrincante.getPuntosVida() + "HP)\n";
 					
 				//Si es golpe NORMAL
@@ -114,7 +81,7 @@ public class PeleadorConTransformacion extends PeleadorConTecnica{
 					//Golpea un 50% mas fuerte
 					this.setPuntosVida(this.getPuntosVida() - (contrincante.getDanoXsegundo()*1.50));
 					if(this.getPuntosVida() < 0) this.setPuntosVida(0);
-					historialPelea += contrincante.getNombre() + " lanza un golpe 💥💥CRÍTICO💥💥"+ " (-" + (contrincante.getDanoXsegundo()*1.50) + " HP) "+ " a " 
+					historialPelea += contrincante.getNombre() + " lanza un <b>golpe CRÍTICO</b>"+ " (-" + (contrincante.getDanoXsegundo()*1.50) + " HP) "+ " a " 
 							+ this.getNombre() + " (" + this.getPuntosVida() + "HP)\n";
 					
 				//Si es golpe NORMAL
@@ -127,13 +94,8 @@ public class PeleadorConTransformacion extends PeleadorConTecnica{
 				
 			}
 			
-			//Si tienen menos de 800HP, se TRANSFORMAN
-			if(this.getPuntosVida() <= 800 && this.getPuntosVida() > 0 && !this.isTransformado()) {
-				this.transformarse();
-				historialPelea += "⬆️⬆️⬆️⬆️" + this.getNombre() + " se transforma en " + this.getTransformacion().getNombre()+ "⬆️⬆️⬆️⬆️\n";
-			}
-			if(contrincante.getPuntosVida() <= 800 && contrincante.getPuntosVida() > 0  
-					&& contrincante.isPuedeTransformarse() && !transformacionContrincante) {
+			//Si el contrincante puede transformarse y tiene menos de 800HP, se TRANSFORMA  
+			if(contrincante.getPuntosVida() <= 800 && contrincante.isPuedeTransformarse() && !transformacionContrincante) {
 				contrincante.transformarse();
 				transformacionContrincante = true;
 				historialPelea += "⬆️⬆️⬆️⬆️" + contrincante.getNombre() + " se transforma en " 
@@ -148,8 +110,7 @@ public class PeleadorConTransformacion extends PeleadorConTecnica{
 				historialPelea += "💣💣💣💣" + this.getNombre() + " utiliza \"" + this.getTecnica().getNombre() + "\" sobre " + contrincante.getNombre() 
 				+ " (-" + this.getTecnica().getDano() + "HP)" + "💣💣💣💣\n";
 			}
-			if(contrincante.getPuntosVida() <= 500 && contrincante.getPuntosVida() > 0 
-					&& contrincante.isTieneTecnicaEspecial() && !tecnica2) {
+			if(contrincante.getPuntosVida() <= 500 && contrincante.getPuntosVida() > 0 && contrincante.isTieneTecnicaEspecial() && !tecnica2) {
 				contrincante.usarTecnica(this);
 				if(this.getPuntosVida() < 0) this.setPuntosVida(0);
 				tecnica2 = true;
@@ -159,9 +120,6 @@ public class PeleadorConTransformacion extends PeleadorConTecnica{
 		}
 		
 		//Vuelven a su estado base
-		if(this.transformado) {
-			this.volverEstadoBase();
-		}
 		if(contrincante.isPuedeTransformarse() && transformacionContrincante) {
 			contrincante.volverEstadoBase();
 		}
@@ -170,13 +128,13 @@ public class PeleadorConTransformacion extends PeleadorConTecnica{
 			//Gana el contrincante
 			ganador_perdedor[0] = contrincante;
 			ganador_perdedor[1] = this;
-			historialPelea += "☠️☠️☠️" + this.getNombre() + " ya no es capaz de seguir peleando☠️☠️☠️ "
+			historialPelea += "☠️☠️☠️" + this.getNombre() + " ya no es capaz de seguir peleando☠️☠️☠️"
 					+ "\n\n 🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️  " + contrincante.getNombre() + " es el GANADOR  🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️";
 		}else {
 			//Gana el peleador actual
 			ganador_perdedor[0] = this;
 			ganador_perdedor[1] = contrincante;	
-			historialPelea += "☠️☠️☠️" + contrincante.getNombre() + " ya no es capaz de seguir peleando☠️☠️☠️ "
+			historialPelea += "☠️☠️☠️" + contrincante.getNombre() + " ya no es capaz de seguir peleando☠️☠️☠️"
 					+ "\n\n 🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️  " + this.getNombre() + " es el GANADOR  🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️";
 		}
 		
@@ -185,21 +143,16 @@ public class PeleadorConTransformacion extends PeleadorConTecnica{
 		
 	}
 	
+	//Vuelve a su estado base desde la transformación
+	public void volverEstadoBase() {}
 	
-	public Transformacion getTransformacion() {
-		return transformacion;
-	}
-	public void setTransformacion(Transformacion transformacion) {
-		this.transformacion = transformacion;
-	}
-	public boolean isTransformado() {
-		return transformado;
-	}
-	public void setTransformado(boolean transformado) {
-		this.transformado = transformado;
+	public TecnicaEspecial getTecnica() {
+		return tecnica;
 	}
 	
-	
+	public void setTecnica(TecnicaEspecial tecnica) {
+		this.tecnica = tecnica;
+	}
 	
 	
 }

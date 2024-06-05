@@ -54,7 +54,7 @@ public class PeleadorConTecnica extends Peleador{
 					//Golpea un 50% mas fuerte
 					contrincante.setPuntosVida(contrincante.getPuntosVida() - (this.getDanoXsegundo() * 1.50));
 					if(contrincante.getPuntosVida() < 0) contrincante.setPuntosVida(0);
-					historialPelea += this.getNombre() + " lanza un golpe 💥💥CRÍTICO💥💥"+ " (-" + (this.getDanoXsegundo() * 1.50) + " HP) "+ " a " 
+					historialPelea += this.getNombre() + " lanza un golpe CRÍTICO"+ " (-" + (this.getDanoXsegundo() * 1.50) + " HP) "+ " a " 
 							+ contrincante.getNombre() + " (" + contrincante.getPuntosVida() + "HP)\n";
 					
 				//Si es golpe NORMAL
@@ -70,28 +70,11 @@ public class PeleadorConTecnica extends Peleador{
 			}
 			
 			//Peleador 2 golpea al Peleador 1
-			if(contrincante.getPuntosVida() > 0) {	
-				
-				//Posibilidad de 20% de golpe crítico
-				golpeCritico = (int)(Math.random() * 10) < 2;
-				
-				//Si es golpe CRÍTICO
-				if(golpeCritico) {
-					
-					//Golpea un 50% mas fuerte
-					this.setPuntosVida(this.getPuntosVida() - (contrincante.getDanoXsegundo()*1.50));
-					if(this.getPuntosVida() < 0) this.setPuntosVida(0);
-					historialPelea += contrincante.getNombre() + " lanza un golpe 💥💥CRÍTICO💥💥"+ " (-" + (contrincante.getDanoXsegundo()*1.50) + " HP) "+ " a " 
-							+ this.getNombre() + " (" + this.getPuntosVida() + "HP)\n";
-					
-				//Si es golpe NORMAL
-				}else {
-					this.setPuntosVida(this.getPuntosVida() - contrincante.getDanoXsegundo());
-					if(this.getPuntosVida() < 0) this.setPuntosVida(0);
-					historialPelea += contrincante.getNombre() + " golpea"+ " (-" + contrincante.getDanoXsegundo() + " HP) "+ " a " 
-							+ this.getNombre() + " (" + this.getPuntosVida() + "HP)\n";
-				}
-				
+			if(contrincante.getPuntosVida() > 0) {				
+				this.setPuntosVida(this.getPuntosVida() - contrincante.getDanoXsegundo());
+				if(this.getPuntosVida() < 0) this.setPuntosVida(0);
+				historialPelea += contrincante.getNombre() + " golpea"+ " (-" + contrincante.getDanoXsegundo() + " HP) "+ " a " 
+						+ this.getNombre() + " (" + this.getPuntosVida() + "HP)\n";
 			}
 			
 			//Si el contrincante puede transformarse y tiene menos de 800HP, se TRANSFORMA  

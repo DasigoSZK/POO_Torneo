@@ -37,7 +37,7 @@ public class PeleadorConTecnica extends Peleador{
 		
 		//Array para guardar al ganador(pos 0) y al perdedor(pos 1)
 		Peleador[] ganador_perdedor = new Peleador[2];
-		String historialPelea = this.getNombre() + " VS " + contrincante.getNombre() + "\n";
+		String historialPelea = "<html>"+this.getNombre() + " VS " + contrincante.getNombre() + "\n";
 		
 		//Pelean hasta que uno se quede sin vida
 		while(this.getPuntosVida() > 0 && contrincante.getPuntosVida() > 0) {
@@ -54,7 +54,7 @@ public class PeleadorConTecnica extends Peleador{
 					//Golpea un 50% mas fuerte
 					contrincante.setPuntosVida(contrincante.getPuntosVida() - (this.getDanoXsegundo() * 1.50));
 					if(contrincante.getPuntosVida() < 0) contrincante.setPuntosVida(0);
-					historialPelea += this.getNombre() + " lanza un golpe 💥💥CRÍTICO💥💥"+ " (-" + (this.getDanoXsegundo() * 1.50) + " HP) "+ " a " 
+					historialPelea += this.getNombre() + " lanza un <b>golpe CRÍTICO</b>"+ " (-" + (this.getDanoXsegundo() * 1.50) + " HP) "+ " a " 
 							+ contrincante.getNombre() + " (" + contrincante.getPuntosVida() + "HP)\n";
 					
 				//Si es golpe NORMAL
@@ -81,7 +81,7 @@ public class PeleadorConTecnica extends Peleador{
 					//Golpea un 50% mas fuerte
 					this.setPuntosVida(this.getPuntosVida() - (contrincante.getDanoXsegundo()*1.50));
 					if(this.getPuntosVida() < 0) this.setPuntosVida(0);
-					historialPelea += contrincante.getNombre() + " lanza un golpe 💥💥CRÍTICO💥💥"+ " (-" + (contrincante.getDanoXsegundo()*1.50) + " HP) "+ " a " 
+					historialPelea += contrincante.getNombre() + " lanza un <b>golpe CRÍTICO</b>"+ " (-" + (contrincante.getDanoXsegundo()*1.50) + " HP) "+ " a " 
 							+ this.getNombre() + " (" + this.getPuntosVida() + "HP)\n";
 					
 				//Si es golpe NORMAL
@@ -129,13 +129,13 @@ public class PeleadorConTecnica extends Peleador{
 			ganador_perdedor[0] = contrincante;
 			ganador_perdedor[1] = this;
 			historialPelea += "☠️☠️☠️" + this.getNombre() + " ya no es capaz de seguir peleando☠️☠️☠️"
-					+ "\n\n 🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️  " + contrincante.getNombre() + " es el GANADOR  🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️";
+					+ "\n\n 🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️  " + contrincante.getNombre() + " es el GANADOR  🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️</html>";
 		}else {
 			//Gana el peleador actual
 			ganador_perdedor[0] = this;
 			ganador_perdedor[1] = contrincante;	
 			historialPelea += "☠️☠️☠️" + contrincante.getNombre() + " ya no es capaz de seguir peleando☠️☠️☠️"
-					+ "\n\n 🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️  " + this.getNombre() + " es el GANADOR  🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️";
+					+ "\n\n 🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️  " + this.getNombre() + " es el GANADOR  🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️</html>";
 		}
 		
 		JOptionPane.showMessageDialog(null, historialPelea);
