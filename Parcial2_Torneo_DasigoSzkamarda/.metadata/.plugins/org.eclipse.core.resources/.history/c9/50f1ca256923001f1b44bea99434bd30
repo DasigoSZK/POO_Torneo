@@ -187,39 +187,6 @@ public class Torneo {
 		
 	}
 	
-	//Muestra los resultados de todas las rondas
-	public void mostrarResultadoTorneo() {
-		
-		String resultadoTorneo = "";
-		
-		//Itera sobre todas las rondas
-		for(int i=0; i<this.getRondas().size(); i++) {
-			
-			resultadoTorneo += "Ronda " + (i+1) +"\n";
-	
-			//Lista los ganadores de la ronda
-			resultadoTorneo += "🏆🏆Ganadores:\n";
-			for(int j=0; j<this.getRondas().get(i).getGanadores().size(); j++) {
-				List<Peleador> ganadores = this.getRondas().get(i).getGanadores();
-				resultadoTorneo += (j+1)+"_"+ganadores.get(j).getNombre() + "\n";
-			}
-			
-			//Lista los perdedores de la ronda
-			resultadoTorneo += "💀💀Perdedores:\n";
-			for(int j=0; j<this.getRondas().get(i).getPerdedores().size(); j++) {
-				List<Peleador> perdedores = this.getRondas().get(i).getPerdedores();
-				resultadoTorneo += (j+1)+"_"+perdedores.get(j).getNombre() + "\n";
-			}
-			
-			resultadoTorneo += "\n";
-		}
-		
-		resultadoTorneo += "Ganador del Torneo: 🏆🏆 " + this.getGanador().getNombre() + " 🏆🏆";
-		
-		JOptionPane.showMessageDialog(null, resultadoTorneo, "Resultados del Torneo", JOptionPane.DEFAULT_OPTION);
-	}
-	
-	
 	public List<Ronda> getRondas() {
 		return rondas;
 	}

@@ -207,14 +207,10 @@ public class Torneo {
 			//Lista los perdedores de la ronda
 			resultadoTorneo += "💀💀Perdedores:\n";
 			for(int j=0; j<this.getRondas().get(i).getPerdedores().size(); j++) {
-				List<Peleador> perdedores = this.getRondas().get(i).getPerdedores();
+				List<Peleador> perdedores = this.getRondas().get(i).getGanadores();
 				resultadoTorneo += (j+1)+"_"+perdedores.get(j).getNombre() + "\n";
 			}
-			
-			resultadoTorneo += "\n";
 		}
-		
-		resultadoTorneo += "Ganador del Torneo: 🏆🏆 " + this.getGanador().getNombre() + " 🏆🏆";
 		
 		JOptionPane.showMessageDialog(null, resultadoTorneo, "Resultados del Torneo", JOptionPane.DEFAULT_OPTION);
 	}

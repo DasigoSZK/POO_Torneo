@@ -121,9 +121,6 @@ public class Main {
 	    //Mostramos el GANADOR DEL TORNEO
 	    torneo.mostrarGanadorTorneo();
 	    
-	    //Resumen del Torneo
-	    torneo.mostrarResultadoTorneo();
-	    
 	}
 
 	

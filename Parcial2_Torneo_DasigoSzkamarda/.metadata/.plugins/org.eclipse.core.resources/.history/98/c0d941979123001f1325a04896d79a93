@@ -212,9 +212,9 @@ public class Torneo {
 			}
 			
 			resultadoTorneo += "\n";
+			
+			resultadoTorneo += "Ganador del Torneo: 🏆🏆 " + this.getGanador().getNombre() + " 🏆🏆";
 		}
-		
-		resultadoTorneo += "Ganador del Torneo: 🏆🏆 " + this.getGanador().getNombre() + " 🏆🏆";
 		
 		JOptionPane.showMessageDialog(null, resultadoTorneo, "Resultados del Torneo", JOptionPane.DEFAULT_OPTION);
 	}
