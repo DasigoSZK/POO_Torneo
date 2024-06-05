@@ -155,13 +155,11 @@ public class Torneo {
 	//Muestra los peleadores de una ronda
 	public static void mostrarGanadoresRonda(Ronda ronda, int numRonda) {
 		
-		String fichaPeleadores = "Resultados Ronda " + numRonda + ":\n\n";
-		fichaPeleadores += "💀Perdedores:💀\n";
-		for(int i=0; i<ronda.getPerdedores().size(); i++) {
-			fichaPeleadores += (i+1) + "_" + ronda.getPerdedores().get(i).getNombre() + "\n";
-		}
-		fichaPeleadores += "\n🏆Ganadores:🏆\n";
-		for(int i=0; i<ronda.getPerdedores().size(); i++) {
+		String fichaPeleadores = "Ronda " + numRonda + ":\n\n";
+		fichaPeleadores += "Perdedores:\n";
+		
+		fichaPeleadores += "\nGanadores:\n";
+		for(int i=0; i<ronda.getGanadores().size(); i++) {
 			fichaPeleadores += (i+1) + "_" + ronda.getGanadores().get(i).getNombre() + "\n";
 		}
 		
