@@ -108,6 +108,7 @@ public class Main {
 	    //----2da / 3era / 4ta ronda----
 	    for(int i=1; i<=3; i++) {
 	    	//Muestra los ganadores de la ronda anterior
+	    	//Torneo.mostrarGanadoresRonda(torneo.getRondas().get(i).getPeleadores(), i+1);
 	    	Torneo.mostrarGanadoresRonda(torneo.getRondas().get(i-1), i);
 	    	//Iniciamos la siguiente ronda
 	    	Torneo.sortearCombates(torneo.getRondas().get(i), i+1);
