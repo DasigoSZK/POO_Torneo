@@ -124,6 +124,9 @@ public class Main {
 	    //Resumen del Torneo
 	    torneo.mostrarResultadoTorneo();
 	    
+	    //Menu Resultados
+	    torneo.menuResultados();
+	    
 	}
 
 	

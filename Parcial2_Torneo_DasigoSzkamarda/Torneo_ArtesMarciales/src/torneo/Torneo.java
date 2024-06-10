@@ -154,8 +154,14 @@ public class Torneo {
 	
 	//Muestra los peleadores de una ronda
 	public static void mostrarGanadoresRonda(Ronda ronda, int numRonda) {
+		//Nombre fase
+		String fase = "";
+		if(numRonda == 1) fase = "Octavos";
+		if(numRonda == 2) fase = "Cuartos";
+		if(numRonda == 3) fase = "Semifinales";
+		if(numRonda == 4) fase = "Final";
 		
-		String fichaPeleadores = "Resultados Ronda " + numRonda + ":\n\n";
+		String fichaPeleadores = fase + " de final - (Ronda " + numRonda + ")\n\n";
 		fichaPeleadores += "💀Perdedores:💀\n";
 		for(int i=0; i<ronda.getPerdedores().size(); i++) {
 			fichaPeleadores += (i+1) + "_" + ronda.getPerdedores().get(i).getNombre() + "\n";
@@ -195,7 +201,13 @@ public class Torneo {
 		//Itera sobre todas las rondas
 		for(int i=0; i<this.getRondas().size(); i++) {
 			
-			resultadoTorneo += "Ronda " + (i+1) +"\n";
+			String fase = "";
+			if(i == 0) fase = "Octavos";
+			if(i == 1) fase = "Cuartos";
+			if(i == 2) fase = "Semifinales";
+			if(i == 3) fase = "Final";
+			
+			resultadoTorneo += fase + " - (Ronda " + (i+1) +")\n";
 	
 			//Lista los ganadores de la ronda
 			resultadoTorneo += "🏆🏆Ganadores:\n";
@@ -218,6 +230,62 @@ public class Torneo {
 		
 		JOptionPane.showMessageDialog(null, resultadoTorneo, "Resultados del Torneo", JOptionPane.DEFAULT_OPTION);
 	}
+	
+	
+	//Menu para mostrar los resultados de cada ronda
+	public void menuResultados() {
+		
+		int selec = 4;
+		do {			
+			//Menu con 4 opciones/fases y 1 salida
+			selec = JOptionPane.showOptionDialog(null, "¿Quieres ver los resultados de alguna fase?", "Menu Resultados",
+					JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[] {"Octavos","Cuartos","Semifinal","Final","Salir"}, "Salir");
+			
+			if(selec != 4) muestraResultadosRonda(selec);
+			
+		} while (selec !=4);
+		
+	}
+	
+	//Muestra los participantes de una ronda finalizada
+	private void muestraResultadosRonda(int numRonda) {
+		
+		String fase = "";
+		if(numRonda == 0) fase = "Octavos";
+		if(numRonda == 1) fase = "Cuartos";
+		if(numRonda == 2) fase = "Semifinales";
+		if(numRonda == 3) fase = "Final";
+		
+		String fichaResultados = "";
+		
+		//Si es la final
+		if(numRonda == 3) {
+			fichaResultados = fase + "\n\n";
+			fichaResultados += "🏆🏆Ganador🏆🏆\n";
+			fichaResultados += this.getGanador().getNombre() + "\n\n";
+			fichaResultados += "💀💀Perdedor💀💀\n";
+			fichaResultados += this.getRondas().get(3).getPerdedores().get(0).getNombre();
+			JOptionPane.showMessageDialog(null, fichaResultados);
+		//Si es cualquier otra fase
+		}else {
+			Ronda ronda = this.getRondas().get(numRonda);
+			
+			fichaResultados += fase + "\n\n";
+			fichaResultados += "🏆🏆Ganadores🏆🏆\n";
+			for(Peleador ganador : ronda.getGanadores()) {
+				fichaResultados += ganador.getNombre() + "\n";
+			}
+			
+			fichaResultados += "\n💀💀Perdedores💀💀\n";
+			for(Peleador perdedor : ronda.getPerdedores()) {
+				fichaResultados += perdedor.getNombre() + "\n";
+			}
+			
+			JOptionPane.showMessageDialog(null, fichaResultados);
+		}
+		
+	}
+	
 	
 	
 	public List<Ronda> getRondas() {
