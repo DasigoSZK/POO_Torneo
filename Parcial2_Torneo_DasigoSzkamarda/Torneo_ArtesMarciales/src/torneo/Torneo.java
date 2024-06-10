@@ -179,13 +179,17 @@ public class Torneo {
 		
 		if(this.getGanador() != null) {
 			
+			String nombrePeleador = this.getGanador().getNombre().toLowerCase().trim();
+			String nombreSinEspacios = nombrePeleador.replace(" ", "");
+			ImageIcon foto = new ImageIcon(Torneo.class.getResource("/imagenes/"+nombreSinEspacios+ ".jpg"));
+			
 			String ganador = "";
 			ganador = "🏆".repeat(this.getGanador().getNombre().length()*3) + "\n";
 			ganador += 	"🏆".repeat(this.getGanador().getNombre().length()) 
 					+ "🏆  " + this.getGanador().getNombre().toUpperCase() + "  🏆" 
 					+ "🏆".repeat(this.getGanador().getNombre().length()) + "\n";
 			ganador += "🏆".repeat(this.getGanador().getNombre().length()*3) + "\n";
-			JOptionPane.showMessageDialog(null, ganador);
+			JOptionPane.showMessageDialog(null, ganador, "Ganador", JOptionPane.DEFAULT_OPTION, foto);
 			
 		}else {
 			JOptionPane.showMessageDialog(null, "Aún no tenemos un ganador para este torneo.\n¡¡Que empiecen los combates!!");
@@ -260,12 +264,16 @@ public class Torneo {
 		
 		//Si es la final
 		if(numRonda == 3) {
+			//Foto ganador
+			String nombrePeleador = this.getGanador().getNombre().toLowerCase().trim();
+			String nombreSinEspacios = nombrePeleador.replace(" ", "");
+			ImageIcon foto = new ImageIcon(Torneo.class.getResource("/imagenes/"+nombreSinEspacios+ ".jpg"));
 			fichaResultados = fase + "\n\n";
 			fichaResultados += "🏆🏆Ganador🏆🏆\n";
 			fichaResultados += this.getGanador().getNombre() + "\n\n";
 			fichaResultados += "💀💀Perdedor💀💀\n";
 			fichaResultados += this.getRondas().get(3).getPerdedores().get(0).getNombre();
-			JOptionPane.showMessageDialog(null, fichaResultados);
+			JOptionPane.showMessageDialog(null, fichaResultados, "Ganador", JOptionPane.DEFAULT_OPTION, foto);
 		//Si es cualquier otra fase
 		}else {
 			Ronda ronda = this.getRondas().get(numRonda);

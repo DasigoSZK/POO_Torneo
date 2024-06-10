@@ -82,7 +82,7 @@ public class Main {
 	    Peleador mrSatan = new PeleadorConTecnica("MrSatan", 500, 500, 90, true, false, tiraPiedra);
 	    Peleador dragon1Estrella = new PeleadorConTecnica("Dragon de 1 estrella", 2500, 2500, 150, true, false, negativeKarmaBall);
 	    Peleador taoPaiPai = new PeleadorConTecnica("Tao Pai Pai", 1400, 1400, 110, true, false, dodonpa);
-	    Peleador capitanGinyu = new PeleadorConTecnica("Capitán Ginyu", 1200, 1200, 120, true, false, bodyChange);
+	    Peleador capitanGinyu = new PeleadorConTecnica("Capitan Ginyu", 1200, 1200, 120, true, false, bodyChange);
 
 	    //Lista con todos los peleadores disponibles
 	    List<Peleador> peleadores = Arrays.asList(
