@@ -103,7 +103,7 @@ public class Torneo {
         JOptionPane.showMessageDialog(null, participantes);
         
         //Preguntamos si desea apostar quién será el ganador del torneo)
-        int apostar = JOptionPane.showConfirmDialog(null, "¿Desea apostar quién será el ganador?", "Apuesta Torneo", JOptionPane.YES_NO_OPTION);
+        int apostar = JOptionPane.showConfirmDialog(null, "¿Desea apostar quién será el ganador?💰💰", "Apuesta Torneo", JOptionPane.YES_NO_OPTION);
         
         if(apostar == JOptionPane.YES_OPTION) apostarGanador();
         
@@ -237,7 +237,7 @@ public class Torneo {
 					ImageIcon foto2 = new ImageIcon(Torneo.class.getResource("/imagenes/"+apuestaSinEspacios+".jpg"));
 					
 					JOptionPane.showMessageDialog(null, "Apostaste por " + this.getApuestaGanador().getNombre() 
-							+ "\n¡¡Ganaste!!","Apuesta", JOptionPane.DEFAULT_OPTION, foto2);
+							+ "\n💰💰💰¡¡Ganaste!!💰💰💰","Apuesta", JOptionPane.DEFAULT_OPTION, foto2);
 				}else {
 					//Perdió la apuesta
 					String nombreApuesta = this.getApuestaGanador().getNombre().toLowerCase().trim();
@@ -245,7 +245,7 @@ public class Torneo {
 					ImageIcon foto2 = new ImageIcon(Torneo.class.getResource("/imagenes/"+apuestaSinEspacios+".jpg"));
 					
 					JOptionPane.showMessageDialog(null, "Apostaste por " + this.getApuestaGanador().getNombre() + " pero el ganador fué " + this.getGanador().getNombre()
-							+ "\nPerdiste :(","Apuesta", JOptionPane.DEFAULT_OPTION, foto2);
+							+ "\nPerdiste 😭😭","Apuesta", JOptionPane.DEFAULT_OPTION, foto2);
 				}
 				
 			}
