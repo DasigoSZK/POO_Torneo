@@ -123,23 +123,16 @@ public class Torneo {
     	}
     	
     	//Agregamos los concursantes a un COMBOBOX
-    	JComboBox<String> menuConcursantes = new JComboBox(nombresConcursantes.toArray());
+    	JComboBox<String> menuConcursantes = new JComboBox(concursantes.toArray());
     	Object[] menuApuesta = {"Apueste por uno de los concursantes:", menuConcursantes};
     	
     	//Mostramos un menu con los concursantes
     	JOptionPane.showConfirmDialog(null, menuApuesta, "Apuesta Torneo", JOptionPane.OK_OPTION);
     	
-    	//Capturamos la SELECCIÓN del COMBOBOX como STRING
-    	String nombreConcursanteSelec = (String)menuConcursantes.getSelectedItem();
+    	//Capturamos la SELECCIÓN del COMBOBOX
+    	Peleador nombreConcursante = (Peleador)menuConcursantes.getSelectedItem();
     	
-    	//Buscamos el OBJETO PELEADOR por su NOMBRE
-    	Peleador concursanteApuesta = buscarPeleador(this.getRondas().get(0).getPeleadores(), nombreConcursanteSelec);
-    	
-    	//Guardamos la apuesta en el torneo
-    	this.setApuestaGanador(concursanteApuesta);
-    	
-    	System.out.println(this.getApuestaGanador().getNombre());
-    
+    	System.out.println(nombreConcursante.getNombre());
     }
     
     //Busca un PELEADOR por su NOMBRE
@@ -214,7 +207,6 @@ public class Torneo {
 		
 		if(this.getGanador() != null) {
 			
-			//Generamos un string con trofeos para mostrar el ganador
 			String nombrePeleador = this.getGanador().getNombre().toLowerCase().trim();
 			String nombreSinEspacios = nombrePeleador.replace(" ", "");
 			ImageIcon foto = new ImageIcon(Torneo.class.getResource("/imagenes/"+nombreSinEspacios+ ".jpg"));
@@ -226,29 +218,6 @@ public class Torneo {
 					+ "🏆".repeat(this.getGanador().getNombre().length()) + "\n";
 			ganador += "🏆".repeat(this.getGanador().getNombre().length()*3) + "\n";
 			JOptionPane.showMessageDialog(null, ganador, "Ganador", JOptionPane.DEFAULT_OPTION, foto);
-			
-			//Mostramos el resultado de la apuesta
-			if(this.getApuestaGanador() != null) {
-				
-				if(this.getApuestaGanador() == this.getGanador()) {
-					//Ganó la apuesta
-					String nombreApuesta = this.getApuestaGanador().getNombre().toLowerCase().trim();
-					String apuestaSinEspacios = nombreApuesta.replace(" ", "");
-					ImageIcon foto2 = new ImageIcon(Torneo.class.getResource("/imagenes/"+apuestaSinEspacios+".jpg"));
-					
-					JOptionPane.showMessageDialog(null, "Apostaste por " + this.getApuestaGanador().getNombre() 
-							+ "\n¡¡Ganaste!!","Apuesta", JOptionPane.DEFAULT_OPTION, foto2);
-				}else {
-					//Perdió la apuesta
-					String nombreApuesta = this.getApuestaGanador().getNombre().toLowerCase().trim();
-					String apuestaSinEspacios = nombreApuesta.replace(" ", "");
-					ImageIcon foto2 = new ImageIcon(Torneo.class.getResource("/imagenes/"+apuestaSinEspacios+".jpg"));
-					
-					JOptionPane.showMessageDialog(null, "Apostaste por " + this.getApuestaGanador().getNombre() + " pero el ganador fué " + this.getGanador().getNombre()
-							+ "\nPerdiste :(","Apuesta", JOptionPane.DEFAULT_OPTION, foto2);
-				}
-				
-			}
 			
 		}else {
 			JOptionPane.showMessageDialog(null, "Aún no tenemos un ganador para este torneo.\n¡¡Que empiecen los combates!!");
