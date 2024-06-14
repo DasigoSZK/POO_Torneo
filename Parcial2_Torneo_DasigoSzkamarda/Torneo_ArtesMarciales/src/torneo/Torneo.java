@@ -100,7 +100,8 @@ public class Torneo {
         	Peleador peleadorActual = this.getRondas().get(0).getPeleadores().get(i);
         	participantes += (i+1) + "_" + peleadorActual.getNombre() + "\n";
         }
-        JOptionPane.showMessageDialog(null, participantes);
+        JOptionPane.showMessageDialog(null, participantes, "Primera Ronda / Octavos", JOptionPane.DEFAULT_OPTION,
+        		new ImageIcon(Torneo.class.getResource("/imagenes/inicioTorneo.jpg")));
         
         //Preguntamos si desea apostar quién será el ganador del torneo)
         int apostar = JOptionPane.showConfirmDialog(null, "¿Desea apostar quién será el ganador?💰💰", "Apuesta Torneo", JOptionPane.YES_NO_OPTION);
@@ -159,9 +160,21 @@ public class Torneo {
     //Genera combates aleatorios mezclando los peleadores
     public static void sortearCombates(Ronda ronda, int numRonda) {
     	
+    	ImageIcon fotoRonda = null;
+    	//Generamos la foto de la ronda
+    	if(numRonda == 1) {
+    		fotoRonda = new ImageIcon(Torneo.class.getResource("/imagenes/octavos.jpg"));
+    	}else if(numRonda == 2) {
+    		fotoRonda = new ImageIcon(Torneo.class.getResource("/imagenes/cuartos.jpg"));
+    	}else if(numRonda == 3) {
+    		fotoRonda = new ImageIcon(Torneo.class.getResource("/imagenes/semifinales.jpg"));    		
+    	}else if(numRonda == 4){
+    		fotoRonda = new ImageIcon(Torneo.class.getResource("/imagenes/finales.jpg"));    		    		
+    	}
+    	
     	//Mezcla los peleadores
     	Collections.shuffle(ronda.getPeleadores());
-        String combates = "Combates de la "+numRonda+"° Ronda:\n\n";
+        String combates = "Combates de la "+numRonda+"° Ronda:\n";
         int contador = 1;
         for(int i=0; i<ronda.getPeleadores().size(); i+=2) {
         	Peleador peleadorActual = ronda.getPeleadores().get(i);
@@ -169,7 +182,7 @@ public class Torneo {
         	combates += "Combate " + contador + ": " + peleadorActual.getNombre() + " VS " + peleadorSiguiente.getNombre() + "\n";
         	contador ++;
         }
-        JOptionPane.showMessageDialog(null, combates);
+        JOptionPane.showMessageDialog(null, combates,"Ronda " + numRonda, JOptionPane.DEFAULT_OPTION, fotoRonda);
     	
     }
 	
@@ -327,7 +340,7 @@ public class Torneo {
 			String nombrePeleador = this.getGanador().getNombre().toLowerCase().trim();
 			String nombreSinEspacios = nombrePeleador.replace(" ", "");
 			ImageIcon foto = new ImageIcon(Torneo.class.getResource("/imagenes/"+nombreSinEspacios+ ".jpg"));
-			fichaResultados = fase + "\n\n";
+			fichaResultados = fase + "\n";
 			fichaResultados += "🏆🏆Ganador🏆🏆\n";
 			fichaResultados += this.getGanador().getNombre() + "\n\n";
 			fichaResultados += "💀💀Perdedor💀💀\n";
@@ -337,18 +350,30 @@ public class Torneo {
 		}else {
 			Ronda ronda = this.getRondas().get(numRonda);
 			
-			fichaResultados += fase + "\n\n";
+			//Generamos la foto de la ronda
+			ImageIcon fotoRonda = null;
+	    	if(numRonda == 0) {
+	    		fotoRonda = new ImageIcon(Torneo.class.getResource("/imagenes/octavos.jpg"));
+	    	}else if(numRonda == 1) {
+	    		fotoRonda = new ImageIcon(Torneo.class.getResource("/imagenes/cuartos.jpg"));
+	    	}else if(numRonda == 2) {
+	    		fotoRonda = new ImageIcon(Torneo.class.getResource("/imagenes/semifinales.jpg"));    		
+	    	}else if(numRonda == 3){
+	    		fotoRonda = new ImageIcon(Torneo.class.getResource("/imagenes/finales.jpg"));    		    		
+	    	}
+			
+			fichaResultados += fase + "\n";
 			fichaResultados += "🏆🏆Ganadores🏆🏆\n";
 			for(Peleador ganador : ronda.getGanadores()) {
 				fichaResultados += ganador.getNombre() + "\n";
 			}
 			
-			fichaResultados += "\n💀💀Perdedores💀💀\n";
+			fichaResultados += "💀💀Perdedores💀💀\n";
 			for(Peleador perdedor : ronda.getPerdedores()) {
 				fichaResultados += perdedor.getNombre() + "\n";
 			}
 			
-			JOptionPane.showMessageDialog(null, fichaResultados);
+			JOptionPane.showMessageDialog(null, fichaResultados, "Resultados Ronda " + (numRonda+1), JOptionPane.DEFAULT_OPTION, fotoRonda);
 		}
 		
 	}
