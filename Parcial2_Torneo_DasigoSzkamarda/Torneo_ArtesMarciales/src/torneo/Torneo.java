@@ -104,7 +104,8 @@ public class Torneo {
         		new ImageIcon(Torneo.class.getResource("/imagenes/inicioTorneo.jpg")));
         
         //Preguntamos si desea apostar quién será el ganador del torneo)
-        int apostar = JOptionPane.showConfirmDialog(null, "¿Desea apostar quién será el ganador?💰💰", "Apuesta Torneo", JOptionPane.YES_NO_OPTION);
+        int apostar = JOptionPane.showConfirmDialog(null, "¿Desea apostar quién será el ganador?💰💰", "Apuesta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+        		new ImageIcon(Torneo.class.getResource("/imagenes/apuesta.jpg")));
         
         if(apostar == JOptionPane.YES_OPTION) apostarGanador();
         

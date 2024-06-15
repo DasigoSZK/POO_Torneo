@@ -1,5 +1,6 @@
 package torneo;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class PeleadorConTecnica extends Peleador{
@@ -138,7 +139,8 @@ public class PeleadorConTecnica extends Peleador{
 					+ "\n\n 🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️  " + this.getNombre() + " es el GANADOR  🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️";
 		}
 		
-		JOptionPane.showMessageDialog(null, historialPelea);
+		JOptionPane.showMessageDialog(null, historialPelea, "Combate: " + this.getNombre() + " VS " + contrincante.getNombre(), JOptionPane.DEFAULT_OPTION,
+				new ImageIcon(Torneo.class.getResource("/imagenes/anunciante.jpg")));
 		return ganador_perdedor;
 		
 	}

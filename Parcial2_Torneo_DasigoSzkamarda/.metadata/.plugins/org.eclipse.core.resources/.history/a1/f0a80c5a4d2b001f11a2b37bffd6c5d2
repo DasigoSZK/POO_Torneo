@@ -181,7 +181,7 @@ public class PeleadorConTransformacion extends PeleadorConTecnica{
 					+ "\n\n 🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️  " + this.getNombre() + " es el GANADOR  🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️🎖️";
 		}
 		
-		JOptionPane.showMessageDialog(null, historialPelea, "Combate: " + this.getNombre() + " VS " + contrincante.getNombre(), JOptionPane.DEFAULT_OPTION,
+		JOptionPane.showMessageDialog(null, historialPelea, "Combate: " + this.getNombre() + " " + contrincante.getNombre(), JOptionPane.DEFAULT_OPTION,
 				new ImageIcon(Torneo.class.getResource("/imagenes/anunciante.jpg")));
 		return ganador_perdedor;
 		
