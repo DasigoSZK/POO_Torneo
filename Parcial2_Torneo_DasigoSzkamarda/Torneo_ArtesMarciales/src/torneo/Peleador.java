@@ -10,6 +10,7 @@ public abstract class Peleador {
 	private double danoXsegundo; 
 	private boolean tieneTecnicaEspecial;
 	private boolean puedeTransformarse;
+	private boolean usoSemilla;
 	
 	//----------------------------Constructor----------------------------	
 	public Peleador(String nombre, double puntosVida, double puntosVidaMax, double danoXsegundo, boolean tieneTecnicaEspecial,
@@ -21,6 +22,8 @@ public abstract class Peleador {
 		this.danoXsegundo = danoXsegundo;
 		this.tieneTecnicaEspecial = tieneTecnicaEspecial;
 		this.puedeTransformarse = puedeTransformarse;
+		this.usoSemilla = false;
+
 	}
 
 
@@ -142,6 +145,16 @@ public abstract class Peleador {
 
 	public void setPuntosVidaMax(double puntosVidaMax) {
 		this.puntosVidaMax = puntosVidaMax;
+	}
+
+
+	public boolean isUsoSemilla() {
+		return usoSemilla;
+	}
+
+
+	public void setUsoSemilla(boolean usoSemilla) {
+		this.usoSemilla = usoSemilla;
 	}  
 	
 	

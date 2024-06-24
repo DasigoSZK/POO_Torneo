@@ -110,7 +110,7 @@ public class Torneo {
         if(apostar == JOptionPane.YES_OPTION) apostarGanador();
         
         //Los mezclamos para armar los combates aleatoriamente
-        sortearCombates(this.getRondas().get(0), 1);
+        sortearCombates(this, this.getRondas().get(0), 1);
         
         
     }
@@ -159,7 +159,7 @@ public class Torneo {
     }
     
     //Genera combates aleatorios mezclando los peleadores
-    public static void sortearCombates(Ronda ronda, int numRonda) {
+    public static void sortearCombates(Torneo torneo, Ronda ronda, int numRonda) {
     	
     	ImageIcon fotoRonda = null;
     	//Generamos la foto de la ronda
@@ -173,6 +173,8 @@ public class Torneo {
     		fotoRonda = new ImageIcon(Torneo.class.getResource("/imagenes/finales.jpg"));    		    		
     	}
     	
+    	Peleador contrincanteApuesta = null;
+    	
     	//Mezcla los peleadores
     	Collections.shuffle(ronda.getPeleadores());
         String combates = "Combates de la "+numRonda+"° Ronda:\n";
@@ -180,23 +182,49 @@ public class Torneo {
         for(int i=0; i<ronda.getPeleadores().size(); i+=2) {
         	Peleador peleadorActual = ronda.getPeleadores().get(i);
         	Peleador peleadorSiguiente = ronda.getPeleadores().get(i+1);
+        	
+        	//Si los peleadores tienen apuesta, los guardamos
+        	if(peleadorActual.equals(torneo.getApuestaGanador())) contrincanteApuesta = peleadorSiguiente;
+        	if(peleadorSiguiente.equals(torneo.getApuestaGanador())) contrincanteApuesta = peleadorSiguiente;
+        	
         	combates += "Combate " + contador + ": " + peleadorActual.getNombre() + " VS " + peleadorSiguiente.getNombre() + "\n";
         	contador ++;
         }
         JOptionPane.showMessageDialog(null, combates,"Ronda " + numRonda, JOptionPane.DEFAULT_OPTION, fotoRonda);
     	
+        //Preguntamos si quiere darle una semilla del hermitaño al peleador apostado
+        if(contrincanteApuesta != null && numRonda != 1) {
+        	//Si el peleador apostado aún no gastó su semilla del hermitaño
+        	if(!torneo.getApuestaGanador().isUsoSemilla()) {
+        		int usar = JOptionPane.showConfirmDialog(null,
+        				torneo.getApuestaGanador().getNombre() + " se enfrentará a " + contrincanteApuesta.getNombre() + "\n"
+        				+ "¿Deseas darle una semilla del hermitaño?\n(Piensalo bien, solo tienes 1)",
+        				"Semillas del Hermitaño", JOptionPane.YES_NO_OPTION,
+        				JOptionPane.QUESTION_MESSAGE,
+        				new ImageIcon(Torneo.class.getResource("/imagenes/semilla.jpg")));
+        		if(usar == JOptionPane.YES_OPTION) {
+        			//Consume semilla y coloca a false para no poder volver a utilizarla
+        			torneo.getApuestaGanador().comerSemillaDelHermitano();
+        			torneo.getApuestaGanador().setUsoSemilla(true);
+        			//Mostramos peleador y vitalidad
+        			String nombrePeleador = torneo.getApuestaGanador().getNombre().toLowerCase().trim();
+        			String nombreSinEspacios = nombrePeleador.replace(" ", "");
+        			JOptionPane.showMessageDialog(null, 
+        					torneo.getApuestaGanador().getNombre() + " comió una semilla del ermitaño🫐 y recuperó toda su vitalidad⚡.",
+        					"Semillas del Hermitaño", JOptionPane.DEFAULT_OPTION,
+        					new ImageIcon(Torneo.class.getResource("/imagenes/"+nombreSinEspacios+".jpg")));
+        		}
+        	}
+        }
+        
     }
 	
 	//Pasa los GANADORES a la siguiente ronda y RECARGA SUS ENERGÍAS
 	public void pasarSiguienteRonda(List<Peleador> ganadores, int ronda) {
 		
-		System.out.println();
-		System.out.println("Ronda " + ronda + ":");
 		for(Peleador ganador : ganadores) {
 			//Pasa ronda
 			this.getRondas().get(ronda).getPeleadores().add(ganador);
-			//Recarga el HP (vida) del peleador
-			ganador.comerSemillaDelHermitano();
 		}
 		
 	}
