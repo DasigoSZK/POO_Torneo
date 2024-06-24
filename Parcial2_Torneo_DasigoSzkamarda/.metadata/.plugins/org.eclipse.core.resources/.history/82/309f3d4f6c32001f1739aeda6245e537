@@ -184,8 +184,8 @@ public class Torneo {
         	Peleador peleadorSiguiente = ronda.getPeleadores().get(i+1);
         	
         	//Si los peleadores tienen apuesta, los guardamos
-        	if(peleadorActual.equals(torneo.getApuestaGanador())) contrincanteApuesta = peleadorSiguiente;
-        	if(peleadorSiguiente.equals(torneo.getApuestaGanador())) contrincanteApuesta = peleadorActual;
+        	if(peleadorActual.equals(torneo.getApuestaGanador())) contrincanteApuesta = peleadorActual;
+        	if(peleadorSiguiente.equals(torneo.getApuestaGanador())) contrincanteApuesta = peleadorSiguiente;
         	
         	combates += "Combate " + contador + ": " + peleadorActual.getNombre() + " VS " + peleadorSiguiente.getNombre() + "\n";
         	contador ++;
