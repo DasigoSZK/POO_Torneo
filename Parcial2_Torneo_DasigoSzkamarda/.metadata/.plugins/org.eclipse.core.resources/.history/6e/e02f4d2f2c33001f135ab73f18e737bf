@@ -43,7 +43,6 @@ public class PeleadorConTecnica extends Peleador{
 		//Pelean hasta que uno se quede sin vida
 		while(this.getPuntosVida() > 0 && contrincante.getPuntosVida() > 0) {
 			
-			
 			//Peleador 1 golpea al Peleador 2
 			if(this.getPuntosVida() > 0) {
 				

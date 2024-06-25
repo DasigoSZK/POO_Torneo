@@ -92,46 +92,40 @@ public class Main {
 	    
 	    /*-------------------------------------------------------------------------------------------------------------------------*/
 	    
-	    int nuevoTorneo = JOptionPane.NO_OPTION;
-	    do {
-	    	// Creamos el torneo  
-		    Torneo torneo = new Torneo(peleadores);
-		    
-		    //Interfaz para seleccionar los peleadores participantes
-		    torneo.iniciarTorneo(peleadores);
-		    
-		    
-		    //----1era RONDA----
-		    torneo.getRondas().get(0).iniciarRonda();
-		    //Pasamos los GANADORES a la 2da ronda
-		    torneo.pasarSiguienteRonda(torneo.getRondas().get(0).getGanadores(), 1);
-		    
-		    //----2da / 3era / 4ta ronda----
-		    for(int i=1; i<=3; i++) {
-		    	//Muestra los ganadores de la ronda anterior
-		    	Torneo.mostrarGanadoresRonda(torneo.getRondas().get(i-1), i);
-		    	//Iniciamos la siguiente ronda
-		    	Torneo.sortearCombates(torneo, torneo.getRondas().get(i), i+1);
-		    	torneo.getRondas().get(i).iniciarRonda();
-	    		//Pasamos los ganadores de la RONDA ACTUAL a la SIGUIENTE
-		    	if(i < 3) torneo.pasarSiguienteRonda(torneo.getRondas().get(i).getGanadores(), i+1);
-		    	//Guardamos el GANADOR
-		    	if(i == 3) torneo.setGanador(torneo.getRondas().get(3).getGanadores().get(0));
-		    }
-		    
-		    //Mostramos el GANADOR DEL TORNEO
-		    torneo.mostrarGanadorTorneo();
-		    
-		    //Resumen del Torneo
-		    torneo.mostrarResultadoTorneo();
-		    
-		    //Menu Resultados
-		    torneo.menuResultados();
-		    
-		    //Preguntamos si desea crear un nuevo torneo
-		    nuevoTorneo = JOptionPane.showConfirmDialog(null, "¿Deseas organizar un nuevo torneo?", "Torneo de Artes Marciales", JOptionPane.YES_NO_OPTION);
-		    
-		} while (nuevoTorneo == JOptionPane.YES_OPTION);
+	    
+	    // Creamos el torneo  
+	    Torneo torneo = new Torneo(peleadores);
+	    
+	    //Interfaz para seleccionar los peleadores participantes
+	    torneo.iniciarTorneo(peleadores);
+	    
+	    
+	    //----1era RONDA----
+	    torneo.getRondas().get(0).iniciarRonda();
+	    //Pasamos los GANADORES a la 2da ronda
+	    torneo.pasarSiguienteRonda(torneo.getRondas().get(0).getGanadores(), 1);
+	    
+	    //----2da / 3era / 4ta ronda----
+	    for(int i=1; i<=3; i++) {
+	    	//Muestra los ganadores de la ronda anterior
+	    	Torneo.mostrarGanadoresRonda(torneo.getRondas().get(i-1), i);
+	    	//Iniciamos la siguiente ronda
+	    	Torneo.sortearCombates(torneo, torneo.getRondas().get(i), i+1);
+	    	torneo.getRondas().get(i).iniciarRonda();
+    		//Pasamos los ganadores de la RONDA ACTUAL a la SIGUIENTE
+	    	if(i < 3) torneo.pasarSiguienteRonda(torneo.getRondas().get(i).getGanadores(), i+1);
+	    	//Guardamos el GANADOR
+	    	if(i == 3) torneo.setGanador(torneo.getRondas().get(3).getGanadores().get(0));
+	    }
+	    
+	    //Mostramos el GANADOR DEL TORNEO
+	    torneo.mostrarGanadorTorneo();
+	    
+	    //Resumen del Torneo
+	    torneo.mostrarResultadoTorneo();
+	    
+	    //Menu Resultados
+	    torneo.menuResultados();
 	    
 	}
 

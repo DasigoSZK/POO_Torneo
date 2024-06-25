@@ -131,7 +131,7 @@ public class Main {
 		    //Preguntamos si desea crear un nuevo torneo
 		    nuevoTorneo = JOptionPane.showConfirmDialog(null, "¿Deseas organizar un nuevo torneo?", "Torneo de Artes Marciales", JOptionPane.YES_NO_OPTION);
 		    
-		} while (nuevoTorneo == JOptionPane.YES_OPTION);
+		} while (nuevoTorneo != JOptionPane.YES_OPTION);
 	    
 	}
 

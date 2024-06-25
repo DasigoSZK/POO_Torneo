@@ -140,7 +140,7 @@ public class Torneo {
     	//Guardamos la apuesta en el torneo
     	this.setApuestaGanador(concursanteApuesta);
     	
-    	System.out.println("Apuesta: " + this.getApuestaGanador().getNombre());
+    	System.out.println(this.getApuestaGanador().getNombre());
     
     }
     
